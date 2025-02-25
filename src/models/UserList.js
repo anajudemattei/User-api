@@ -1,35 +1,31 @@
 class UserList {
-    constructor () {
+    constructor() {
         this.users = [];
-        }
+    }
 
     addUser(user) {
         this.users.push(user);
     }
 
-    getUserById() {
+    getAllUsers() {
         return this.users;
-}
+    }
 
     getUserById(id) {
         const user = this.users.find(user => user.id == id);
-        if(!user) {
-            throw new Error('User not found!');
-        }
+        if (!user) throw new Error("Usuário não encontrado");
         return user;
-}
+    }
 
-    updateUserById(id, UpdateData) {
-        let user = this.getUserById(id);
-        Object.assign(user, UpdateData);
+    updateUser(id, updatedData) {
+        const user = this.getUserById(id);
+        Object.assign(user, updatedData);
         return user;
-}
+    }
 
-    deleteUserById(id) {
+    deleteUser(id) {
         this.users = this.users.filter(user => user.id != id);
-
-}
-
+    }
 }
 
 module.exports = UserList;
